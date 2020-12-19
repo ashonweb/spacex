@@ -26,10 +26,26 @@ export default theme =>({
         '&:hover':{
             background:"#82b433"
         },
-        '&:focus':{
-            background:"#82b433"
-        }
+        // '&:focus':{
+        //     background:"#82b433"
+        // },
+        // '&:active':{
+        //     background:"red"
+        // },
+        // '&:focus-within':{
+        //     background:"black"
+        // },
+        // '&:focus-visible':{
+        //     background:"yellow"
+
+        // },
+        // '&:visites':{
+        //     background:"pink"
+
+        // },
     },
+
+   
     details:{
         margin:0,
     },
