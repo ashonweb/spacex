@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import ContentStyle from '../Styles/ContentStyle'
-import { Grid, Paper, Typography, withStyles, Button, Divider } from '@material-ui/core'
+import { Grid, Paper,  withStyles,  } from '@material-ui/core'
 import FilterComponent from './FilterComponent';
 import DataComponent from './DataComponent';
 import { withRouter } from 'react-router-dom';
@@ -26,14 +26,14 @@ class Content extends Component {
 
     async componentDidMount() {
         const matchParams = window.location.pathname;
-        let url = (matchParams.split('/'));
+        // let url = (matchParams.split('/'));
         let firstpath = (matchParams.split('/')[1]);
-        let secondpath = (matchParams.split('/')[2]);
-        let thirdpath = (matchParams.split('/')[3]);
-        let fourpath = (matchParams.split('/')[4]);
-        let fivepath = (matchParams.split('/')[5]);
-        let sixpath = (matchParams.split('/')[6]);
-        let sevenpath = (matchParams.split('/')[7]);
+        // let secondpath = (matchParams.split('/')[2]);
+        // let thirdpath = (matchParams.split('/')[3]);
+        // let fourpath = (matchParams.split('/')[4]);
+        // let fivepath = (matchParams.split('/')[5]);
+        // let sixpath = (matchParams.split('/')[6]);
+        // let sevenpath = (matchParams.split('/')[7]);
 
         if (firstpath === 'f') {
             this.filterdata()
@@ -224,7 +224,7 @@ class Content extends Component {
     filterdata = async () => {
         const matchParams = window.location.pathname;
         let url = (matchParams.split('/'));
-        let firstpath = (matchParams.split('/')[1]);
+        // let firstpath = (matchParams.split('/')[1]);
         let secondpath = (matchParams.split('/')[2]);
         let thirdpath = (matchParams.split('/')[3]);
         let fourpath = (matchParams.split('/')[4]);

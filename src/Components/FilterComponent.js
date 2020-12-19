@@ -214,9 +214,9 @@ class FilterComponent extends Component {
     }
     render() {
         const { classes } = this.props;
-        const matchParams = window.location.pathname;
-        let firstpath = (matchParams.split('/')[1]);
-        let btn_class = this.state.yearclass ? "blackButton" : "whiteButton";
+        // const matchParams = window.location.pathname;
+        // let firstpath = (matchParams.split('/')[1]);
+        // let btn_class = this.state.yearclass ? "blackButton" : "whiteButton";
         return (
             <>
 
@@ -237,7 +237,7 @@ class FilterComponent extends Component {
                                     {
                                         containedSecondary: classes.bitems
                                     }
-                                } onClick={() => { this.filterByYear(button,i) }} variant="contained" color="secondary" key={i}>
+                                } onClick={() => { this.filterByYear(button,i) }} variant="contained" color="secondary" >
                                     {button}
                                 </Button>
                             ))}
@@ -258,7 +258,7 @@ class FilterComponent extends Component {
                                             {
                                                 containedSecondary: classes.bitems
                                             }
-                                        } onClick={() => { this.s_launch(button,i) }} variant="contained" color="secondary" key={i}>
+                                        } onClick={() => { this.s_launch(button,i) }} variant="contained" color="secondary" >
                                             {button === true ? <>True</> : <>False</>}
                                         </Button>                                        </>
 
@@ -272,7 +272,7 @@ class FilterComponent extends Component {
                                             {
                                                 containedSecondary: classes.bitems
                                             }
-                                        } onClick={() => { this.s_launch(button,i) }} variant="contained" color="secondary" key={i}>
+                                        } onClick={() => { this.s_launch(button,i) }} variant="contained" color="secondary" >
                                             {button === true ? <>True</> : <>False</>}
                                         </Button>                                        </>
 
@@ -302,7 +302,7 @@ class FilterComponent extends Component {
                                             {
                                                 containedSecondary: classes.bitems
                                             }
-                                        } onClick={() => { this.s_landing(button,i) }} variant="contained" color="secondary" key={i}>
+                                        } onClick={() => { this.s_landing(button,i) }} variant="contained" color="secondary" >
                                             {button === true ? <>True</> : <>False</>}
                                         </Button>                                        </>
 
@@ -316,7 +316,7 @@ class FilterComponent extends Component {
                                     {
                                         containedSecondary: classes.bitems
                                     }
-                                } onClick={() => { this.s_landing(button,i) }} variant="contained" color="secondary" key={i}>
+                                } onClick={() => { this.s_landing(button,i) }} variant="contained" color="secondary" >
                                     {button === true ? <>True</> : <>False</>}
                                 </Button>
                             ))}

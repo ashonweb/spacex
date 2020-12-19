@@ -15,8 +15,8 @@ class DataComponent extends Component {
 
     render() {
         const { classes } = this.props;
-        const matchParams = window.location.pathname;
-        let firstpath = (matchParams.split('/')[1]);
+        // const matchParams = window.location.pathname;
+        // let firstpath = (matchParams.split('/')[1]);
 
         return (
             <>
@@ -27,7 +27,7 @@ class DataComponent extends Component {
                             <Paper style={{padding:"10px"}}>
                                 <div style={{padding:"15px",background:"#E8E8E8"}}>
                                 {/* <img src={value.links.mission_patch} alt="missing image" /> */}
-                            <img src={di} alt="missing image" style={{height:"125px",width:"160px",display:"block",margin:"0 auto"}}/>
+                            <img src={di} alt="missing" style={{height:"125px",width:"160px",display:"block",margin:"0 auto"}}/>
                             </div>
 
                                 <h6 className={classes.details}>mission_name:<span className={classes.details_item}>{value.mission_name}</span></h6>
