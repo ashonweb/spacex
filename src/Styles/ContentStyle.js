@@ -20,6 +20,7 @@ export default theme =>({
         margin:"10px 0" 
     },
     bitems:{
+        flexBasis:"45%",
         color:"black",
         margin:"2px",
         background:"#bede3e",

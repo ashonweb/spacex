@@ -23,7 +23,7 @@ class DataComponent extends Component {
                 <Grid className={classes.gridcontainer} container spacing={3}>
                     {this.props.wholeresponse.length === 0 ? <h6>No Data available for your selection</h6>:<>
                     {this.props.wholeresponse.map((value, i) => (
-                        <Grid item xs={12} sm={3}>
+                        <Grid item xs={12} sm={6} md={3}>
                             <Paper style={{padding:"10px"}}>
                                 <div style={{padding:"15px",background:"#E8E8E8"}}>
                                 {/* <img src={value.links.mission_patch} alt="missing image" /> */}
