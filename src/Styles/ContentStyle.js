@@ -43,6 +43,9 @@ export default theme =>({
         //     background:"pink"
 
         // },
+        [theme.breakpoints.down('sm')]:{
+            flexBasis:"45%"
+        }
     },
 
    
