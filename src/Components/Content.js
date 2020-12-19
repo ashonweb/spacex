@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import ContentStyle from '../Styles/ContentStyle'
 import { Grid, Paper, Typography, withStyles, Button,Divider } from '@material-ui/core'
 import FilterComponent from './FilterComponent';
+import DataComponent from './DataComponent';
 
 
 class Content extends Component {
@@ -18,6 +19,11 @@ class Content extends Component {
     }
     render() {
         const { classes } = this.props;
+        const matchParams = window.location.pathname;
+        console.log(matchParams, "href")
+        let firstpath = (matchParams.split('/')[1]);
+        let secondpath = (matchParams.split('/')[2]);
+        console.log(firstpath,secondpath,"secondpath")
         return (
             <>
                 <Grid className={classes.gridcontainer} container spacing={3}>
@@ -27,9 +33,7 @@ class Content extends Component {
                         </Paper>
                     </Grid>
                     <Grid item xs={12} sm={10}>
-                        <Paper className={classes.paper}>
-                            hi
-                       </Paper>
+                         <DataComponent/>
 
                     </Grid>
                 </Grid>

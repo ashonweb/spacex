@@ -11,7 +11,7 @@ class FilterComponent extends Component {
        this.state={
            filtervalue:'',
            s_launching:'',
-           s_landing:''
+           s_landing:'',
        }
    }
    filterByYear = (buttonyear) =>{
@@ -19,7 +19,23 @@ class FilterComponent extends Component {
            this.setState({
                filtervalue:buttonyear
            },()=>{
-               this.props.history.push(`/year/${this.state.filtervalue}`)
+
+            if(this.state.s_launching === '' && this.state.s_landing === '' )
+            {
+            this.props.history.push(`/f/year/${this.state.filtervalue}`)
+
+            }
+            else if (this.state.s_launching !== '' && this.state.s_landing === '' ) {
+                this.props.history.push(`/f/year/${this.state.filtervalue}/launch/${this.state.s_launching}`)
+            }
+            else if (this.state.s_launching === '' && this.state.s_landing !== '' ) {
+                this.props.history.push(`/f/year/${this.state.filtervalue}/landing/${this.state.s_landing}`)
+            }
+            else {
+                this.props.history.push(`/f/year/${this.state.filtervalue}/launch/${this.state.s_launching}/landing/${this.state.s_landing}`)
+
+            }
+
            })
        }
        else
@@ -28,70 +44,151 @@ class FilterComponent extends Component {
                this.setState({
                    filtervalue:''
                },()=>{
-               this.props.history.push(`/${this.state.filtervalue}`)
+                if(this.state.s_launching !== '' && this.state.s_landing !== '' )
+                {
+                    console.log("am here")
+                    this.props.history.push(`/f/launch/${this.state.s_launching}/landing/${this.state.s_landing}`)
+
+    
+                }
+               else if (this.state.s_launching !== '' && this.state.s_landing === '' ) {
+                    this.props.history.push(`/f/launch/${this.state.s_launching}`)
+                }
+                else if (this.state.s_launching === '' && this.state.s_landing !== '' ) {
+                    this.props.history.push(`/f/landing/${this.state.s_landing}`)
+                }
+                else {
+                    this.props.history.push(`/`)
+
+                }
            })
            }
            else{
             this.setState({
                 filtervalue:buttonyear
             },()=>{
-                this.props.history.push(`/year/${this.state.filtervalue}`)
+                if(this.state.s_launching === '' && this.state.s_landing === '' )
+                {
+                // this.props.history.push(`/f/launch/${this.state.s_launching}`)
+                this.props.history.push(`/f/year/${this.state.filtervalue}`)
+    
+                }
+                else if (this.state.s_launching !== '' && this.state.s_landing === '' ) {
+                    this.props.history.push(`/f/year/${this.state.filtervalue}/launch/${this.state.s_launching}`)
+                }
+                else if (this.state.s_launching === '' && this.state.s_landing !== '') {
+                    this.props.history.push(`/f/year/${this.state.filtervalue}/landing/${this.state.s_landing}`)
+                }
+                else {
+                    this.props.history.push(`/f/year/${this.state.filtervalue}/launch/${this.state.s_launching}/landing/${this.state.s_landing}`)
+    
+                }
+    
+                // this.props.history.push(`/f/year/${this.state.filtervalue}`)
             })
            }
        }
    }
 
-    s_launch = (value) => {
-        if (this.state.s_launching === '') {
-            this.setState({
-                s_launching: value
-            }, () => {
-                this.props.history.push(`/launch/${this.state.s_launching}`)
-            })
-        }
-        else {
-            if (this.state.s_launching === value) {
-                this.setState({
-                    s_launching: ''
-                }, () => {
-                    this.props.history.push(`/${this.state.s_launching}`)
-                })
+   s_launch = (value) => {
+    if(this.state.s_launching === ''){
+        this.setState({
+            s_launching:value
+        },
+        ()=>{
+            console.log(this.state.s_launching)
+            if(this.state.filtervalue === '' && this.state.s_landing === '' )
+            {
+            this.props.history.push(`/f/launch/${this.state.s_launching}`)
             }
+            else if (this.state.filtervalue !== '' && this.state.s_landing === '' ) {
+                this.props.history.push(`/f/year/${this.state.filtervalue}/launch/${this.state.s_launching}`)
+            }
+            else if (this.state.filtervalue === '' && this.state.s_landing !== '') {
+                this.props.history.push(`/f/launch/${this.state.s_launching}/landing/${this.state.s_landing}`)
+            }
+
             else {
-                this.setState({
-                    s_launching: value
-                }, () => {
-                    this.props.history.push(`/launch/${this.state.s_launching}`)
-                })
+                this.props.history.push(`/f/year/${this.state.filtervalue}/launch/${this.state.s_launching}/landing/${this.state.s_landing}`)
+
             }
-        }
+        })
     }
-    s_landing = (value) => {
-        if (this.state.s_landing === '') {
-            this.setState({
-                s_landing: value
-            }, () => {
-                this.props.history.push(`/landing/${this.state.s_landing}`)
-            })
-        }
-        else {
-            if (this.state.s_landing === value) {
-                this.setState({
-                    s_landing: ''
-                }, () => {
-                    this.props.history.push(`/${this.state.s_landing}`)
-                })
+    else {
+        this.setState({
+            s_launching:!this.state.s_launching
+        },()=>{
+            console.log(this.state.s_launching)
+            if(this.state.filtervalue === '' && this.state.s_landing === '' )
+            {
+            this.props.history.push(`/f/launch/${this.state.s_launching}`)
             }
+            else if (this.state.filtervalue !== '' && this.state.s_landing === '' ) {
+                this.props.history.push(`/f/year/${this.state.filtervalue}/launch/${this.state.s_launching}`)
+            }
+            else if (this.state.filtervalue === '' && this.state.s_landing !== '') {
+                this.props.history.push(`/f/launch/${this.state.s_launching}/landing/${this.state.s_landing}`)
+            }
+
             else {
-                this.setState({
-                    s_landing: value
-                }, () => {
-                    this.props.history.push(`/landing/${this.state.s_landing}`)
-                })
+                this.props.history.push(`/f/year/${this.state.filtervalue}/launch/${this.state.s_launching}/landing/${this.state.s_landing}`)
+
             }
-        }
+
+        })
     }
-   
+
+    
+}
+s_landing = (value) => {
+    if(this.state.s_landing === ''){
+        this.setState({
+            s_landing:value
+        },
+        ()=>{
+            console.log(this.state.s_landing)
+            if(this.state.filtervalue === '' && this.state.s_launching === '' )
+            {
+            this.props.history.push(`/f/landing/${this.state.s_landing}`)
+            }
+            else if (this.state.filtervalue !== '' && this.state.s_launching === '' ) {
+                this.props.history.push(`/f/year/${this.state.filtervalue}/landing/${this.state.s_landing}`)
+            }
+            else if (this.state.filtervalue === '' && this.state.s_launching !== '') {
+                this.props.history.push(`/f/launch/${this.state.s_launching}/landing/${this.state.s_landing}`)
+            }
+
+            else {
+                this.props.history.push(`/f/year/${this.state.filtervalue}/launch/${this.state.s_launching}/landing/${this.state.s_landing}`)
+
+            }
+        })
+    }
+    else {
+        this.setState({
+            s_landing:!this.state.s_landing
+        },()=>{
+            console.log(this.state.s_launching)
+            if(this.state.filtervalue === '' && this.state.s_launching === '' )
+            {
+            this.props.history.push(`/f/landing/${this.state.s_landing}`)
+            }
+            else if (this.state.filtervalue !== '' && this.state.s_launching === '' ) {
+                this.props.history.push(`/f/year/${this.state.filtervalue}/landing/${this.state.s_landing}`)
+            }
+            else if (this.state.filtervalue === '' && this.state.s_launching !== '') {
+                this.props.history.push(`/f/launch/${this.state.s_launching}/landing/${this.state.s_landing}`)
+            }
+
+            else {
+                this.props.history.push(`/f/year/${this.state.filtervalue}/launch/${this.state.s_launching}/landing/${this.state.s_landing}`)
+
+            }
+        })
+    }
+
+    
+}
     render() {
         const { classes } = this.props;
         return (

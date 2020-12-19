@@ -29,5 +29,13 @@ export default theme =>({
         '&:focus':{
             background:"#82b433"
         }
-    }
+    },
+    details:{
+        margin:0,
+    },
+    details_item:{
+        color: '#22a1d6',
+    fontWeight: "500",
+    padding: '0 4px'
+    },
 })
