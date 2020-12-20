@@ -1,4 +1,4 @@
-export default  theme =>({
+const style =  theme =>({
     gridcontainer:{
         width:"100% !important",
         margin:"0 !important"
@@ -59,3 +59,4 @@ export default  theme =>({
     padding: '0 4px'
     },
 })
+export default style
