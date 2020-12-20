@@ -328,7 +328,7 @@ class Content extends Component {
             }
             if (secondpath === 'year' && fourpath === 'landing') {
 
-                await fetch(`https://api.spaceXdata.com/v3/launches?limit=100&land_success=${typeof(fivepath)===null}&launch_year=${thirdpath}`, {
+                await fetch(`https://api.spaceXdata.com/v3/launches?limit=100&land_success=${(fivepath)}&launch_year=${thirdpath}`, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json'
