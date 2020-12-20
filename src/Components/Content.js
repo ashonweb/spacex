@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import ContentStyle from '../Styles/ContentStyle'
-import { Grid, Paper,  withStyles,  } from '@material-ui/core'
+import { Grid, Paper, withStyles, } from '@material-ui/core'
 import FilterComponent from './FilterComponent';
 import DataComponent from './DataComponent';
 import { withRouter } from 'react-router-dom';
@@ -25,16 +25,17 @@ class Content extends Component {
 
 
     async componentDidMount() {
-        const matchParams = window.location.pathname;
-        // let url = (matchParams.split('/'));
-        let firstpath = (matchParams.split('/')[1]);
+        const matchParams = window.location.href;
+        console.log(window.location,matchParams)
+        let url = (matchParams.split('/'));
+        let firstpath = (matchParams.split('/')[4]);
         // let secondpath = (matchParams.split('/')[2]);
         // let thirdpath = (matchParams.split('/')[3]);
         // let fourpath = (matchParams.split('/')[4]);
         // let fivepath = (matchParams.split('/')[5]);
         // let sixpath = (matchParams.split('/')[6]);
         // let sevenpath = (matchParams.split('/')[7]);
-
+        console.log(url, firstpath)
         if (firstpath === 'f') {
             this.filterdata()
         }
@@ -51,7 +52,7 @@ class Content extends Component {
                         wholeresponse: res
                     },
                         () => {
-                           
+
                         })
                 })
         }
@@ -222,16 +223,41 @@ class Content extends Component {
 
 
     filterdata = async () => {
-        const matchParams = window.location.pathname;
+        const matchParams = window.location.href;
         let url = (matchParams.split('/'));
         // let firstpath = (matchParams.split('/')[1]);
-        let secondpath = (matchParams.split('/')[2]);
-        let thirdpath = (matchParams.split('/')[3]);
-        let fourpath = (matchParams.split('/')[4]);
-        let fivepath = (matchParams.split('/')[5]);
-        let sixpath = (matchParams.split('/')[6]);
-        let sevenpath = (matchParams.split('/')[7]);
-        if (url.length > 6 && url.length === 8) {
+        let secondpath = (matchParams.split('/')[5]);
+        let thirdpath = (matchParams.split('/')[6]);
+        let fourpath = (matchParams.split('/')[7]);
+        let fivepath = (matchParams.split('/')[8]);
+        let sixpath = (matchParams.split('/')[9]);
+        let sevenpath = (matchParams.split('/')[10]);
+        console.log(window.location.href,url,"dad")
+
+        //    if(this.state.filtervalue !== '' && this.state.s_launching !== '' && this.state.s_landing !== ''){
+        //     await fetch(`https://api.spacexdata.com/v3/launches?limit=100&launch_success=${this.state.s_launching}&land_success=${this.state.s_landing}&launch_year=${this.state.filtervalue}`, {
+        //         method: 'GET',
+        //         headers: {
+        //             'Accept': 'application/json'
+        //         }
+        //     })
+        //         .then(res => res.json())
+        //         .then(res => {
+        //             this.setState({
+        //                 wholeresponse: res
+        //             },
+        //                 () => {
+        //                     // console.log(res)
+        //                     // console.log(this.state.wholeresponse.map((val, i) => {
+        //                     //     return val.rocket.first_stage.cores
+        //                     // }))
+        //                 })
+        //         })
+
+        //     }
+
+
+        if (url.length > 9 && url.length === 11) {
             if (secondpath === 'year' && fourpath === 'launch' && sixpath === 'landing') {
 
                 await fetch(`https://api.spacexdata.com/v3/launches?limit=100&launch_success=${fivepath}&land_success=${sevenpath}&launch_year=${thirdpath}`, {
@@ -255,7 +281,7 @@ class Content extends Component {
 
             }
         }
-        if (url.length > 4 && url.length <=6) {
+        if (url.length > 7 && url.length <= 9) {
             if (secondpath === 'launch' && fourpath === 'landing') {
 
                 await fetch(`https://api.spaceXdata.com/v3/launches?limit=100&launch_success=${thirdpath}&land_success=${fivepath}`, {
@@ -324,7 +350,7 @@ class Content extends Component {
             }
         }
 
-        if (url.length >3 && url.length <=4) {
+        if (url.length > 6 && url.length <= 7) {
             if (secondpath === 'year') {
                 await fetch(`https://api.spacexdata.com/v3/launches?limit=100&launch_year=${thirdpath}`, {
                     method: 'GET',
@@ -389,7 +415,7 @@ class Content extends Component {
 
         }
 
-        if (url.length === 2) {
+        if (url.length <= 5) {
             await fetch('https://api.spacexdata.com/v3/launches?limit=100', {
                 method: 'GET',
                 headers: {
@@ -416,6 +442,9 @@ class Content extends Component {
 
     render() {
         const { classes } = this.props;
+        const matchParams = window.location.pathname;
+        let url = (matchParams.split('/'));
+        console.log(url)
         return (
             <>
                 <Grid className={classes.gridcontainer} container spacing={3}>

@@ -12,15 +12,17 @@ class FilterComponent extends Component {
             filtervalue: '',
             s_launching: '',
             s_landing: '',
-            buttonid:null,
-            launchid:null,
-            landid:null
+            buttonid: null,
+            launchid: null,
+            landid: null,
+            s_l_toggle: this.props.s_lauch,
+            s_land_toggle: this.props.s_land
         }
     }
-    filterByYear = (buttonyear,i) => {
+    filterByYear = (buttonyear, i) => {
         if (this.state.filtervalue === '') {
             this.setState({
-                buttonid:i,
+                buttonid: i,
                 filtervalue: buttonyear
             }, () => {
 
@@ -58,7 +60,7 @@ class FilterComponent extends Component {
         else {
             if (this.state.filtervalue === buttonyear) {
                 this.setState({
-                    buttonid:null,
+                    buttonid: null,
                     filtervalue: ''
                 }, () => {
                     if (this.state.s_launching !== '' && this.state.s_landing !== '') {
@@ -81,7 +83,7 @@ class FilterComponent extends Component {
             }
             else {
                 this.setState({
-                    buttonid:i,
+                    buttonid: i,
                     filtervalue: buttonyear
                 }, () => {
                     if (this.state.s_launching === '' && this.state.s_landing === '') {
@@ -107,11 +109,12 @@ class FilterComponent extends Component {
         }
     }
 
-    s_launch = (value,i) => {
+    s_launch = (value, i) => {
         if (this.state.s_launching === '') {
             this.setState({
-                launchid:1,
-                s_launching: value
+                launchid: 1,
+                s_launching: value,
+                s_l_toggle: this.state.s_l_toggle.reverse(),
             },
                 () => {
                     if (this.state.filtervalue === '' && this.state.s_landing === '') {
@@ -136,8 +139,10 @@ class FilterComponent extends Component {
         else {
 
             this.setState({
-                launchid: i+1,
-                s_launching: value
+                launchid: i + 1,
+                s_launching: value,
+                s_l_toggle: this.state.s_l_toggle.reverse(),
+
             }, () => {
                 if (this.state.filtervalue === '' && this.state.s_landing === '') {
                     this.props.history.push(`/f/launch/${this.state.s_launching}`)
@@ -161,11 +166,12 @@ class FilterComponent extends Component {
 
 
     }
-    s_landing = (value,i) => {
+    s_landing = (value, i) => {
         if (this.state.s_landing === '') {
             this.setState({
-                landid:1,
-                s_landing: value
+                landid: 1,
+                s_landing: value,
+                s_land_toggle: this.state.s_land_toggle.reverse(),
             },
                 () => {
                     if (this.state.filtervalue === '' && this.state.s_launching === '') {
@@ -188,8 +194,10 @@ class FilterComponent extends Component {
         }
         else {
             this.setState({
-                landid:i+1,
-                s_landing: value
+                landid: i + 1,
+                s_landing: value,
+                s_land_toggle: this.state.s_land_toggle.reverse(),
+
             }, () => {
                 if (this.state.filtervalue === '' && this.state.s_launching === '') {
                     this.props.history.push(`/f/landing/${this.state.s_landing}`)
@@ -232,12 +240,12 @@ class FilterComponent extends Component {
 
                         <div className={classes.buttons}>
                             {this.props.buttons.map((button, i) => (
-                                <Button key={i} className={ this.state.buttonid === i && 'is-active' }
-                                classes={
-                                    {
-                                        containedSecondary: classes.bitems
-                                    }
-                                } onClick={() => { this.filterByYear(button,i) }} variant="contained" color="secondary" >
+                                <Button key={i} className={this.state.buttonid === i && 'is-active'}
+                                    classes={
+                                        {
+                                            containedSecondary: classes.bitems
+                                        }
+                                    } onClick={() => { this.filterByYear(button, i) }} variant="contained" color="secondary" >
                                     {button}
                                 </Button>
                             ))}
@@ -251,37 +259,18 @@ class FilterComponent extends Component {
 
                         <div className={classes.buttons}>
 
-                            {this.state.s_launching === true ?
-                                <>{this.props.s_lauch.reverse().map((button, i) => (
-                                    <>
-                                        <Button key={i}  className={ this.state.launchid === i && 'is-active'}classes={
-                                            {
-                                                containedSecondary: classes.bitems
-                                            }
-                                        } onClick={() => { this.s_launch(button,i) }} variant="contained" color="secondary" >
-                                            {button === true ? <>True</> : <>False</>}
-                                        </Button>                                        </>
-
-                                ))}
+                            {this.state.s_l_toggle.map((button, i) => (
+                                <>
+                                    <Button key={i} className={this.state.launchid === i && 'is-active'} classes={
+                                        {
+                                            containedSecondary: classes.bitems
+                                        }
+                                    } onClick={() => { this.s_launch(button, i) }} variant="contained" color="secondary" >
+                                        {button === true ? <>True</> : <>False</>}
+                                    </Button>                                       
                                 </>
 
-                                :
-                                <>{this.props.s_lauch.map((button, i) => (
-                                    <>
-                                        <Button key={i} className={ this.state.launchid === i && 'is-active'}  classes={
-                                            {
-                                                containedSecondary: classes.bitems
-                                            }
-                                        } onClick={() => { this.s_launch(button,i) }} variant="contained" color="secondary" >
-                                            {button === true ? <>True</> : <>False</>}
-                                        </Button>                                        </>
-
-                                ))}
-                                </>
-
-                            }
-
-
+                            ))}
 
                         </div>
                     </div>
@@ -293,47 +282,19 @@ class FilterComponent extends Component {
 
                         <div className={classes.buttons}>
 
-
-
-                            {this.state.s_landing === true ?
-                                <>{   this.props.s_land.reverse().map((button, i) => ( 
-                                    <>
-                                        <Button key={i}  className={ this.state.landid === i && 'is-active'} classes={
-                                            {
-                                                containedSecondary: classes.bitems
-                                            }
-                                        } onClick={() => { this.s_landing(button,i) }} variant="contained" color="secondary" >
-                                            {button === true ? <>True</> : <>False</>}
-                                        </Button>                                        </>
-
-                                ))}
-                                </>
-
-                                :
+                            {this.state.s_land_toggle.map((button, i) => (
                                 <>
-                                 {this.props.s_land.map((button, i) => (
-                                <Button key={i}  className={ this.state.landid === i && 'is-active'} classes={
-                                    {
-                                        containedSecondary: classes.bitems
-                                    }
-                                } onClick={() => { this.s_landing(button,i) }} variant="contained" color="secondary" >
-                                    {button === true ? <>True</> : <>False</>}
-                                </Button>
-                            ))}
+                                    <Button key={i} className={this.state.landid === i && 'is-active'} classes={
+                                        {
+                                            containedSecondary: classes.bitems
+                                        }
+                                    } onClick={() => { this.s_landing(button, i) }} variant="contained" color="secondary" >
+                                        {button === true ? <>True</> : <>False</>}
+                                    </Button>                             
                                 </>
 
-                            }
+                            ))}
 
-
-
-
-
-
-
-
-
-
-                           
                         </div>
                     </div>
                 </div>
