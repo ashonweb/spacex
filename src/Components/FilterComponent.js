@@ -111,8 +111,19 @@ class FilterComponent extends Component {
 
     s_launch = (value, i) => {
         if (this.state.s_launching === '') {
+
+            if(i === 0){
+                this.setState({ launchid: i+1 ,
+                })
+
+            }
+            else{
+                this.setState({ launchid: i-1 ,
+                })
+
+            }
+
             this.setState({
-                launchid: 1,
                 s_launching: value,
                 s_l_toggle: this.state.s_l_toggle.reverse(),
             },
@@ -137,13 +148,25 @@ class FilterComponent extends Component {
         }
 
         else {
+                if(i === 0){
+                    this.setState({ launchid: i+1 ,
+                    })
+    
+                }
+                else{
+                    this.setState({ launchid: i-1 ,
+                    })
+    
+                }
+
+            
 
             this.setState({
-                launchid: i + 1,
                 s_launching: value,
                 s_l_toggle: this.state.s_l_toggle.reverse(),
 
             }, () => {
+                
                 if (this.state.filtervalue === '' && this.state.s_landing === '') {
                     this.props.history.push(`/f/launch/${this.state.s_launching}`)
                 }
@@ -168,8 +191,17 @@ class FilterComponent extends Component {
     }
     s_landing = (value, i) => {
         if (this.state.s_landing === '') {
+            if(i === 0){
+                this.setState({ landid: i+1 ,
+                })
+
+            }
+            else{
+                this.setState({ landid: i-1 ,
+                })
+
+            }
             this.setState({
-                landid: 1,
                 s_landing: value,
                 s_land_toggle: this.state.s_land_toggle.reverse(),
             },
@@ -193,8 +225,19 @@ class FilterComponent extends Component {
                 })
         }
         else {
+            if(i === 0){
+                this.setState({ landid: i+1 ,
+                })
+
+            }
+            else{
+                this.setState({ landid: i-1 ,
+                })
+
+            }
+
+        
             this.setState({
-                landid: i + 1,
                 s_landing: value,
                 s_land_toggle: this.state.s_land_toggle.reverse(),
 
@@ -289,7 +332,13 @@ class FilterComponent extends Component {
                                             containedSecondary: classes.bitems
                                         }
                                     } onClick={() => { this.s_landing(button, i) }} variant="contained" color="secondary" >
-                                        {button === true ? <>True</> : <>False</>}
+                                        {/* {button === true ? <>True</> : <>False</>} */}
+                                        {button === true &&(<>True</>) }
+                                        {button === false &&(<>False</>) }
+                                        {button === null &&(<>Null</>) }
+
+
+
                                     </Button>                             
                                 </>
 

@@ -50,12 +50,15 @@ class DataComponent extends Component {
                                     ))}
                                 </span></h6>
                                 <h6 className={classes.details}>Successfull Launch :<span className={classes.details_item}>
-                                    {value.launch_success ? <>true</> : <>false</>}
+                                    {value.launch_success ? <>True</> : <>False</>}
                                 </span></h6>
                                 <h6 className={classes.details}>Successful Landing : <span className={classes.details_item}>
                                     {value.rocket.first_stage.cores.map((value, i) => (
                                         <>
-                                            {value.land_success === (null || false) ? <> false </> : <> true </>}
+                                            {/* {value.land_success} */}
+                                            {value.land_success === null ? <> - </> : <>{value.land_success === true ? <>True</>:<>False</>}</>}
+
+                                            {/* {(value.land_success === null || value.land_success === false) ? <> false </> : <> true </>} */}
                                         </>
 
                                     ))}

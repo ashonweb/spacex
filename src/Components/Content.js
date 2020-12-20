@@ -52,7 +52,7 @@ class Content extends Component {
                         wholeresponse: res
                     },
                         () => {
-
+                            console.log(res)
                         })
                 })
         }
@@ -233,7 +233,7 @@ class Content extends Component {
         let sixpath = (matchParams.split('/')[9]);
         let sevenpath = (matchParams.split('/')[10]);
         console.log(window.location.href,url,"dad")
-
+      
         //    if(this.state.filtervalue !== '' && this.state.s_launching !== '' && this.state.s_landing !== ''){
         //     await fetch(`https://api.spacexdata.com/v3/launches?limit=100&launch_success=${this.state.s_launching}&land_success=${this.state.s_landing}&launch_year=${this.state.filtervalue}`, {
         //         method: 'GET',
@@ -257,7 +257,7 @@ class Content extends Component {
         //     }
 
 
-        if (url.length > 9 && url.length === 11) {
+        if (url.length > 10 && url.length <= 12) {
             if (secondpath === 'year' && fourpath === 'launch' && sixpath === 'landing') {
 
                 await fetch(`https://api.spacexdata.com/v3/launches?limit=100&launch_success=${fivepath}&land_success=${sevenpath}&launch_year=${thirdpath}`, {
@@ -281,7 +281,7 @@ class Content extends Component {
 
             }
         }
-        if (url.length > 7 && url.length <= 9) {
+        if (url.length > 8 && url.length <= 10) {
             if (secondpath === 'launch' && fourpath === 'landing') {
 
                 await fetch(`https://api.spaceXdata.com/v3/launches?limit=100&launch_success=${thirdpath}&land_success=${fivepath}`, {
@@ -328,7 +328,7 @@ class Content extends Component {
             }
             if (secondpath === 'year' && fourpath === 'landing') {
 
-                await fetch(`https://api.spaceXdata.com/v3/launches?limit=100&launch_year=${thirdpath}&land_success=${fivepath}`, {
+                await fetch(`https://api.spaceXdata.com/v3/launches?limit=100&land_success=${typeof(fivepath)===null}&launch_year=${thirdpath}`, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json'
@@ -340,7 +340,7 @@ class Content extends Component {
                             wholeresponse: res
                         },
                             () => {
-                                // console.log(res)
+                                console.log(res)
                                 // console.log(this.state.wholeresponse.map((val, i) => {
                                 //     return val.rocket.first_stage.cores
                                 // }))
@@ -350,7 +350,7 @@ class Content extends Component {
             }
         }
 
-        if (url.length > 6 && url.length <= 7) {
+        if (url.length > 6 && url.length <= 8) {
             if (secondpath === 'year') {
                 await fetch(`https://api.spacexdata.com/v3/launches?limit=100&launch_year=${thirdpath}`, {
                     method: 'GET',
@@ -364,7 +364,7 @@ class Content extends Component {
                             wholeresponse: res
                         },
                             () => {
-                                // console.log(res)
+                                console.log(res)
                                 // console.log(this.state.wholeresponse.map((val, i) => {
                                 //     return val.rocket.first_stage.cores
                                 // }))
@@ -405,7 +405,7 @@ class Content extends Component {
                             wholeresponse: res
                         },
                             () => {
-                                // console.log(res)
+                                console.log(res)
                                 // console.log(this.state.wholeresponse.map((val, i) => {
                                 //     return val.rocket.first_stage.cores
                                 // }))
